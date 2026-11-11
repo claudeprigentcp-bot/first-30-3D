@@ -4,6 +4,16 @@ Voilier de course-croisière type **Bénéteau First 30 JK** (plan Juan Kouyoumd
 généré de façon paramétrique en Python (numpy/matplotlib uniquement pour la génération
 et les rendus).
 
+## Aperçus (le bateau s'affiche ici directement)
+
+![Vue isométrique](preview_iso.png)
+
+![Profil](preview_side.png) ![Face](preview_front.png)
+
+![Dessus](preview_top.png) ![Trois-quarts arrière](preview_stern.png)
+
+![Animation 360°](First30_JK_animation.gif)
+
 ## Caractéristiques du modèle
 
 | Paramètre | Valeur |

@@ -32,6 +32,7 @@ et les rendus).
 - `viewer.py` — rendu rapide : `python3 viewer.py First30_JK.obj sortie.png`
 - `viewer.html` — visionneuse interactive Three.js (ouvrir dans un navigateur)
 - `preview_*.png` — rendus de contrôle (iso, side, front, top, stern)
+- `First30_JK_animation.gif` — animation 3D (rotation 360° + roulis), générée par `animate_first30.py`
 
 ## Ouvrir le modèle
 

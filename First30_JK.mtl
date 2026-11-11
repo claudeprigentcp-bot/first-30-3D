@@ -1,0 +1,65 @@
+newmtl Hull
+Kd 0.95 0.96 0.98
+Ka 0.2 0.2 0.2
+Ks 0.4 0.4 0.45
+Ns 60
+newmtl Stripe
+Kd 0.04 0.08 0.28
+Ka 0.05 0.05 0.1
+Ks 0.3 0.3 0.4
+Ns 40
+newmtl Deck
+Kd 0.74 0.75 0.71
+Ka 0.2 0.2 0.2
+Ks 0.1 0.1 0.1
+Ns 10
+newmtl Cockpit
+Kd 0.55 0.56 0.58
+Ka 0.15 0.15 0.15
+Ks 0.1 0.1 0.1
+Ns 10
+newmtl Coachroof
+Kd 0.93 0.94 0.96
+Ka 0.2 0.2 0.2
+Ks 0.3 0.3 0.35
+Ns 50
+newmtl Windows
+Kd 0.05 0.08 0.13
+Ka 0.05 0.05 0.08
+Ks 0.6 0.6 0.7
+Ns 90
+newmtl Hatch
+Kd 0.22 0.23 0.26
+Ka 0.1 0.1 0.1
+Ks 0.2 0.2 0.2
+Ns 20
+newmtl Keel
+Kd 0.14 0.15 0.18
+Ka 0.05 0.05 0.06
+Ks 0.2 0.2 0.2
+Ns 15
+newmtl Bulb
+Kd 0.65 0.08 0.08
+Ka 0.2 0.05 0.05
+Ks 0.15 0.15 0.15
+Ns 15
+newmtl Alu
+Kd 0.58 0.60 0.63
+Ka 0.15 0.15 0.16
+Ks 0.5 0.5 0.55
+Ns 70
+newmtl Sail
+Kd 0.97 0.95 0.88
+Ka 0.25 0.25 0.22
+Ks 0.05 0.05 0.05
+Ns 5
+newmtl Steel
+Kd 0.50 0.52 0.56
+Ka 0.15 0.15 0.16
+Ks 0.6 0.6 0.65
+Ns 80
+newmtl Dark
+Kd 0.10 0.10 0.12
+Ka 0.05 0.05 0.06
+Ks 0.3 0.3 0.3
+Ns 40

@@ -1,5 +1,8 @@
 # First 30 JK — modèle 3D
 
+🔗 **Voir le voilier en 3D tout de suite, en un clic (aucune installation) :**
+👉 https://raw.githack.com/claudeprigentcp-bot/first-30-3D/vibe/first30jk-3d-ba467c/viewer-standalone.html
+
 Voilier de course-croisière type **Bénéteau First 30 JK** (plan Juan Kouyoumdjian),
 généré de façon paramétrique en Python (numpy/matplotlib uniquement pour la génération
 et les rendus).

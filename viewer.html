@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>First 30 JK - visionneuse 3D</title>
+<style>
+  body { margin: 0; overflow: hidden; background: #0e1620; font-family: sans-serif; }
+  #info { position: absolute; top: 10px; left: 12px; color: #cfe3f5; font-size: 13px; z-index: 10; }
+</style>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+<div id="info">First 30 JK &mdash; glisser pour orbiter, molette pour zoomer</div>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
+import { MTLLoader } from 'three/addons/loaders/MTLLoader.js';
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(innerWidth, innerHeight);
+renderer.setClearColor(0x0e1620);
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.fog = new THREE.Fog(0x0e1620, 40, 120);
+const camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.1, 200);
+camera.position.set(14, 8, 14);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.target.set(5, 1, 0);
+
+scene.add(new THREE.HemisphereLight(0xffffff, 0x223344, 1.1));
+const sun = new THREE.DirectionalLight(0xffffff, 1.6);
+sun.position.set(20, 30, 10);
+scene.add(sun);
+
+const water = new THREE.Mesh(
+  new THREE.PlaneGeometry(120, 80),
+  new THREE.MeshPhongMaterial({ color: 0x1d4e79, transparent: true, opacity: 0.85 })
+);
+water.rotation.x = -Math.PI / 2;
+scene.add(water);
+
+const grid = new THREE.GridHelper(60, 60, 0x335577, 0x223a4d);
+grid.position.y = -2.05;
+scene.add(grid);
+
+new MTLLoader().load('First30_JK.mtl', (materials) => {
+  materials.preload();
+  new OBJLoader().setMaterials(materials).load('First30_JK.obj', (obj) => {
+    obj.traverse((c) => { if (c.isMesh) { c.material.side = THREE.DoubleSide; } });
+    scene.add(obj);
+  });
+});
+
+addEventListener('resize', () => {
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+
+(function animate() {
+  requestAnimationFrame(animate);
+  controls.update();
+  renderer.render(scene, camera);
+})();
+</script>
+</body>
+</html>

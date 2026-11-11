@@ -1,8 +1,21 @@
 # First 30 JK — modèle 3D
 
+🔗 **Voir le voilier en 3D tout de suite, en un clic (aucune installation) :**
+👉 https://raw.githack.com/claudeprigentcp-bot/first-30-3D/efa7ed7/viewer-standalone.html
+
 Voilier de course-croisière type **Bénéteau First 30 JK** (plan Juan Kouyoumdjian),
 généré de façon paramétrique en Python (numpy/matplotlib uniquement pour la génération
 et les rendus).
+
+## Aperçus (le bateau s'affiche ici directement)
+
+![Vue isométrique](preview_iso.png)
+
+![Profil](preview_side.png) ![Face](preview_front.png)
+
+![Dessus](preview_top.png) ![Trois-quarts arrière](preview_stern.png)
+
+![Animation 360°](First30_JK_animation.gif)
 
 ## Caractéristiques du modèle
 
@@ -30,14 +43,16 @@ et les rendus).
 - `First30_JK.stl` — version maillée pour impression 3D / CAO
 - `make_first30.py` — générateur paramétrique
 - `viewer.py` — rendu rapide : `python3 viewer.py First30_JK.obj sortie.png`
-- `viewer.html` — visionneuse interactive Three.js (ouvrir dans un navigateur)
+- `viewer.html` — visionneuse interactive Three.js (à servir sur HTTP, ex. GitHub Pages)
+- `viewer-standalone.html` — **visionneuse 3D autonome** (WebGL vanilla, modèle embarqué, aucune dépendance) : télécharger le fichier et double-cliquer, fonctionne hors-ligne ; générée par `make_viewer_standalone.py`
 - `preview_*.png` — rendus de contrôle (iso, side, front, top, stern)
+- `First30_JK_animation.gif` — animation 3D (rotation 360° + roulis), générée par `animate_first30.py`
 
 ## Ouvrir le modèle
 
 - **Blender / MeshLab / FreeCAD / Windows 3D Viewer** : ouvrir `First30_JK.obj`
 - **Impression 3D** : utiliser `First30_JK.stl`
-- **Navigateur** : ouvrir `viewer.html` à côté du `.obj`/`.mtl`
+- **Navigateur, manipulable** : télécharger `viewer-standalone.html` (clic droit → enregistrer) et l'ouvrir dans un navigateur — orbite à la souris, zoom à la molette, pan au clic droit ; ou activer GitHub Pages (Settings → Pages, branche `vibe/first30jk-3d-ba467c`, racine `/`) puis ouvrir `viewer.html` en ligne
 
 ## Régénérer / modifier
 

@@ -1,0 +1,42 @@
+name: validate-model
+
+on:
+  push:
+    branches: [vibe/**]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install numpy matplotlib
+      - name: Regenerate the 3D model
+        run: python make_first30.py
+      - name: Validate OBJ geometry
+        run: |
+          python - <<'EOF'
+          nv = nf = nl = 0
+          ymin = zmin = 1e9
+          ymax = zmax = -1e9
+          for line in open('First30_JK.obj'):
+              if line.startswith('v '):
+                  nv += 1
+                  _, x, y, z = line.split()[:4]
+                  y, z = float(y), float(z)
+                  ymin = min(ymin, y); ymax = max(ymax, y)
+                  zmin = min(zmin, z); zmax = max(zmax, z)
+              elif line.startswith('f '):
+                  nf += 1
+              elif line.startswith('l '):
+                  nl += 1
+          assert nv > 2000 and nf > 2500, 'mesh too small'
+          assert abs((ymax - ymin) - 3.20) < 0.01, 'beam mismatch'
+          assert abs(-zmin - 1.90) < 0.01, 'draft mismatch'
+          print('OK: v=%d f=%d l=%d beam=%.2f draft=%.2f mast=%.2f' % (nv, nf, nl, ymax - ymin, -zmin, zmax))
+          EOF
